@@ -36,7 +36,7 @@ int main(){
     cout<<"Triplet sum: ";
     vector<int>:: iterator it;
     for(const auto &triplet: ans){
-     cout << "(" << triplet[0] << ", " << triplet[1] << ", " << triplet[2] << ") ";
+     cout << "(" << triplet.at(0) << ", " << triplet.at(1) << ", " << triplet.at(2) << ") ";
     }
     cout<<endl;
     return 0;
