@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     vector<int> vec{1,2,0,2,0,2,0,2,0,1,0,2,1,2,1,2};
     int left = 0,mid = 0;
-    int right = vec.size() - 1;
+    int right = vec.size() - 2;
 
     while(mid <= right){
         if(vec[mid] == 0){
