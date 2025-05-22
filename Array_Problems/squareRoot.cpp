@@ -7,7 +7,7 @@ double precision(int num, int precision, double ans){
     for(int i = 0 ; i < precision ; i++){
         factor /= 10;
         for(double j = ans ; j*j < num ; ans = j, j += factor);
-        //ans = ans - factor;
+         
         
     }
     return ans;
@@ -15,12 +15,13 @@ double precision(int num, int precision, double ans){
 
 int main(){
     int num;
+    double mid;
     cout<<"Enter the number: ";
     cin>>num;
     double ans = -1;
     int left = 1, right = num;
     while(left <= right){
-        int mid = left + (right - left)/2;
+         mid = left + (right - left)/2;
 
         if(mid*mid == num){
             ans = mid;
@@ -36,7 +37,7 @@ int main(){
     }
     if(ans != -1)
     {
-        ans = precision(num, 10, ans);
+        ans = precision(num, 4, ans);
         cout<<"Square root of "<<num<<": "<<ans<<endl;
     }
   
