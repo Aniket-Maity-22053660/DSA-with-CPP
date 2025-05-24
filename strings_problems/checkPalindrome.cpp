@@ -14,12 +14,19 @@ int main(){
     string name;
     bool ans = true;
     cout<<"Enter the name: ";
-    cin>>name;
+    getline(cin, name);
 
     int start = 0, end = name.length() - 1;
 
     while(start < end){
-        
+        if (!isalnum(name[start])){
+            start++;
+            continue;
+        }
+        if(!isalnum(name[end])){
+            end--;
+            continue;
+        }
         if(toLowerCase(name[start]) == toLowerCase(name[end])){
             start++;
             end--;
