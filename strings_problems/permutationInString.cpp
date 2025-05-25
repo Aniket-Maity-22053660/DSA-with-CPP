@@ -4,26 +4,33 @@
 
 using namespace std;
 
-int main(){
-    string str1 = "eidbaooo";
-    string str2 = "aeae";
-    bool ans = true;
-
+bool checkPermutation(string str1, string str2){
+    
     vector<int> cnt1(26, 0);
     vector<int> cnt2(26, 0);
-    for(int i = 0 ; i < str1.length() ; i++){
-        cnt1.at(str1.at(i)-'a')++;
-    }
-    for(int i = 0 ; i < str2.length() ; i++){
-        cnt2.at(str2.at(i)-'a')++;
-    }
 
     for(int i = 0 ; i < str2.length() ; i++){
-        if(cnt1[i] != cnt2[i]){
-            ans = false;
-            break;
-        }
+        cnt1[str1[i] - 'a']++;
+        cnt2[str2[i] - 'a']++;
     }
+    if(cnt1 == cnt2){
+        return true;
+    }
+
+    for(int i = str2.length() ; i < str1.length() ; i++){
+        cnt1[str1[i] - 'a']++;
+        cnt1[str1[i - str2.length()] - 'a']--;
+        if(cnt1 == cnt2)
+        return true;
+    }
+    return false;
+}
+
+int main(){
+    string str1 = "eidbaooo";
+    string str2 = "ab";
+    bool ans = checkPermutation(str1, str2);
+
     if(ans){
         cout<<"Permutaion of "<<str2<<" is present in the string "<<str1<<"!"<<endl;
     }
