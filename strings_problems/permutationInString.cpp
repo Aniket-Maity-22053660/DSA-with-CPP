@@ -8,6 +8,9 @@ bool checkPermutation(string str1, string str2){
     
     vector<int> cnt1(26, 0);
     vector<int> cnt2(26, 0);
+    if(str2.length() > str1.length()){
+        return false;
+    }
 
     for(int i = 0 ; i < str2.length() ; i++){
         cnt1[str1[i] - 'a']++;
@@ -17,7 +20,7 @@ bool checkPermutation(string str1, string str2){
         return true;
     }
 
-    for(int i = str2.length() ; i < str1.length() ; i++){
+    for(int i = str2.length() ; i < str1.length() ; i++){ 
         cnt1[str1[i] - 'a']++;
         cnt1[str1[i - str2.length()] - 'a']--;
         if(cnt1 == cnt2)
