@@ -1,22 +1,37 @@
 #include<iostream>
 #include<vector>
+#include<list>
 
+#define Row 2
+#define Col 3
 using namespace std;
 int main()
 {
     vector<vector<int>> arr = {{1,2,3}, {4,5,6}};
-    vector<int> row (arr.size());
-    vector<vector<int>> ans(arr[0].size(), row);
-    for(int i = 0 ; i < arr.size() ; i++){
-        for(int j = 0 ; j < arr[0].size() ; j++){
+    //vector<int> row (arr.size());
+    vector<vector<int>> ans(Col, vector<int> (Row));
+    for(int i = 0 ; i < Row ; i++){
+        for(int j = 0 ; j < Col ; j++){
+            
             ans[j][(arr.size()-1)-i] = arr[i][j];
         }
     }
     
-    vector<vector<int>>:: const_iterator rowIt = ans.cbegin();
-    vector<int>:: const_iterator colIt;
+    list<list<int>> li;
+
+    for(int i = 0 ; i < Col ; i++){
+        list<int> li1;
+        for(int j = 0 ; j < Row ; j++){
+            li1.push_front(arr[j][i]);
+        }
+        li.push_back(li1);
+    }
+
     
-    for(; rowIt != ans.cend() ; rowIt++){
+    list<list<int>>:: const_iterator rowIt = li.cbegin();
+    list<int>:: const_iterator colIt;
+    
+    for(; rowIt != li.cend() ; rowIt++){
         for(colIt = rowIt->cbegin(); colIt != rowIt->cend() ; colIt++){
             cout<<*colIt<<" ";
         }
