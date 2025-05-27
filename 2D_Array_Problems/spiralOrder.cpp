@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-   vector<vector<int>> arr= {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}};
+    vector<vector<int>> arr= {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}};
     int top = 0, left = 0, right = arr[0].size() - 1, bottom = arr.size()-1;
     vector<int> ans;
 
