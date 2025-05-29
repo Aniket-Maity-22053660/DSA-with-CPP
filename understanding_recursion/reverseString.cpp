@@ -2,22 +2,22 @@
 #include<algorithm>
 using namespace std;
 
-void reverseString(string &name, int l , int r){
+string reverseString(string name, int l , int r){
 
     if(l > r){
-        return;
+        return name;
     }
     /* char temp = name[l];
     name[l] = name[r];
     name[r] = temp;
     */
     swap(name[l], name[r]);
-    reverseString(name, l+1, r-1);
+    return reverseString(name, l+1, r-1);
 
 }
 int main(){
     string name = "Aniket Maity";
-    reverseString(name, 0, name.size()-1);
-    cout<<"After reversal: "<<name<<endl;
+    string ans =  reverseString(name, 0, name.size()-1);
+    cout<<"After reversal: "<<ans<<endl;
     return 0;
 }
