@@ -7,15 +7,15 @@ int partition(vector<int> &vec, int s, int e) {
     int pivot = vec[e];  // Use last element as pivot
     int i = s - 1;
 
-    for (int j = s; j < e; j++) {
+    for (int j = s; j <= e; j++) {
         if (vec[j] <= pivot) {
             i++;
             swap(vec[i], vec[j]);
         }
     }
 
-    swap(vec[i + 1], vec[e]);  // Place pivot in correct position
-    return i + 1;
+    //swap(vec[i + 1], vec[e]);  // Place pivot in correct position
+    return i;
 }
 
 // QuickSort Function
