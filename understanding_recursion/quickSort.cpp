@@ -4,17 +4,26 @@ using namespace std;
 
 // Lomuto Partition Function
 int partition(vector<int> &vec, int s, int e) {
-    int pivot = vec[e];  // Use last element as pivot
-    int i = s - 1;
+   // int pivot = vec[e];  // Use last element as pivot
+    int pivot = vec[s]; //use first element as pivot
+    int i = e + 1;
 
-    for (int j = s; j <= e; j++) {
+    /*for (int j = s; j <= e; j++) {
         if (vec[j] <= pivot) {
             i++;
             swap(vec[i], vec[j]);
         }
     }
+    */
+    for(int j = e ; j >=s ; j--){
+        if(vec.at(j) >= pivot){
+            i--;
+            swap(vec.at(j), vec.at(i));
+        }
+    }
 
-    //swap(vec[i + 1], vec[e]);  // Place pivot in correct position
+
+    //swap(vec[i + 1], vec[s]);  // Place pivot in correct position
     return i;
 }
 
