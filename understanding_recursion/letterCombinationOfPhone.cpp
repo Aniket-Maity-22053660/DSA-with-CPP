@@ -16,6 +16,7 @@ void solve(string digits, string output, int index, vector<string> &ans, vector<
         solve(digits, output, index+1, ans, mapping);
         output.pop_back();
     }
+    return;
 }
 int main(){
     vector<string> mapping {"","", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
@@ -28,7 +29,7 @@ int main(){
     if(!ans.empty())
     cout<<'{';
     for(;it != ans.end() ; it++){
-        cout<<*it<<" ";
+        cout<<*it;
         if(it+1 != ans.end()){ 
             cout<<", ";
         }
