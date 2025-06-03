@@ -16,7 +16,7 @@ void solve(string name, int index, vector<string> &ans){
     }
 }
 int main(){
-    string name = "cat";
+    string name = "saturation";
     vector<string> ans;
     int index = 0;
     solve(name, index, ans);
