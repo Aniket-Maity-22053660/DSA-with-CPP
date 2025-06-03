@@ -65,6 +65,20 @@ void del(node* &head, int data){
     temp->next = temp1->next;
     delete temp1;
 }
+void reverse(node* &head){
+    node* back = nullptr;
+    node* middle = head;
+    node* front = middle->next;
+    while(middle != nullptr){
+        middle->next = back;
+        back = middle;
+        middle = front;
+        if(front != nullptr)
+        front = front->next;
+    }
+    head = back;
+
+}
 
 int main(){
     node *node1 = new node(12);
@@ -84,6 +98,8 @@ int main(){
     insertAtPos(head, 2, 20);
     print(head);
     del(head, 99);
+    print(head);
+    reverse(head);
     print(head);
     return 0;
 }
