@@ -25,7 +25,7 @@ void insertAtTail(node* head, int data){
         head = head->next;
     }
     head->next = temp;
-    temp->prev = head;;
+    temp->prev = head;
 }
 void insertAtPos(node* &head, int data, int pos){
     if(pos == 1){
@@ -85,6 +85,7 @@ void del(node* &head, int data) {
 
 
 void reverse(node* &head) {
+    
     if (head == nullptr || head->next == nullptr) return;
 
     node* current = head;
@@ -102,6 +103,24 @@ void reverse(node* &head) {
     if (temp != nullptr) {
         head = temp->prev;
     }
+
+        
+        /*
+        node* temp = head;
+        while(temp->next != nullptr){
+            temp = temp->next;
+        }
+
+        while(temp != nullptr){
+            cout<<temp->data;
+            if(temp->prev != nullptr){
+                cout<<", ";
+            }else{
+                cout<<'\n';
+            }
+            temp = temp->prev;
+        }
+            */
 }
 
 
@@ -119,27 +138,31 @@ void print(node* head){
 int main(){
     node* node1 = new node(20);
     node* head = node1;
-    print(head);
+    insertAtHead(head, 10);
     insertAtHead(head, 30);
     print(head);
-    insertAtTail(head, 50);
+    /*reverse(head);
+    insertAtPos(head, 50, 1);
     print(head);
-    del(head, 20);
+    reverse(head);
+    del(head, 50);
+    reverse(head);
+    print(head);
+    */
+    reverse(head);
+    print(head);
+    insertAtPos(head, 50, 1);
     print(head);
     del(head, 30);
+    reverse(head);
     print(head);
-    insertAtPos(head, 90, 1);
+    insertAtTail(head, 90);
     print(head);
-    insertAtPos(head, 51, 2);
+    insertAtPos(head, 100, 90);
+    reverse(head);
     print(head);
-    insertAtPos(head, 100, 3);
+    del(head, 10);
     print(head);
-    insertAtPos(head, 99, 3);
-    print(head);
-    //reverse(head);
-    insertAtTail(head, 500);
-    print(head);
-    insertAtPos(head, 111, 1);
     reverse(head);
     print(head);
     return 0;
