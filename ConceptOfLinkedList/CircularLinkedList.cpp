@@ -61,8 +61,24 @@ void del(node* tail, int data){
     node* temp = ptr->next;
     ptr->next = temp->next;
 }
-
 }
+void reverse(node* &tail){
+    node* end = tail->next;
+    node* back = tail;
+    node* middle = tail->next;
+    node* front = tail->next->next;
+
+    do{
+        middle->next = back;
+        back = middle;
+        middle = front;
+        {
+        front = front->next;
+        }
+    }while(middle != end);
+    tail = middle;
+}
+
 void print(node* const &tail) {
     if (tail == nullptr) return;
 
@@ -96,8 +112,7 @@ int main(){
     print(tail);
     insertAtPos(tail, 699, 2);
     print(tail);
-    del(tail, 90);
-    del(tail, 100);
+    reverse(tail);
     print(tail);
     return 0;
 }
