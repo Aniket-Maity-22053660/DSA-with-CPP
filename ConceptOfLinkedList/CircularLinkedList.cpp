@@ -41,7 +41,26 @@ void insertAtPos(node* &tail, int data, int pos){
         insertAtTail(tail, data);
     }
     return;
-
+}
+void del(node* tail, int data){
+    node* ptr = tail->next;
+    if(ptr->data == data){
+        node* temp = ptr;
+        temp = temp->next;
+        tail->next = temp;
+        ptr->next = nullptr;
+        delete ptr;
+        return;
+    }else{
+    do{
+        if(ptr->next->data == data){
+             break;
+        }
+        ptr = ptr->next;
+    }while(ptr != tail->next);
+    node* temp = ptr->next;
+    ptr->next = temp->next;
+}
 
 }
 void print(node* const &tail) {
@@ -68,6 +87,17 @@ int main(){
     insertAtHead(tail, 55);
     print(tail);
     insertAtPos(tail, 100,5);
+    print(tail);
+    del(tail, 19);
+    print(tail);
+    del(tail, 55);
+    print(tail);
+    insertAtPos(tail, 599, 90);
+    print(tail);
+    insertAtPos(tail, 699, 2);
+    print(tail);
+    del(tail, 90);
+    del(tail, 100);
     print(tail);
     return 0;
 }
