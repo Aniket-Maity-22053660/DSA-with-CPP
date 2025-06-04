@@ -79,6 +79,31 @@ void reverse(node* &tail){
     tail = middle;
 }
 
+node* findMiddle(node*tail){
+    node* ptr = tail->next;
+    if(tail == nullptr){
+        return nullptr;
+    }
+    else if(tail->next == tail){
+        return tail;
+    }else if(tail->next->next == tail){
+        return tail->next;
+    }else{
+        node* first = tail->next;
+        node* second = tail->next;
+    do{
+        first = first->next;
+        second = second->next->next;
+
+    }while(second->next != tail->next && second->next->next != tail->next);
+    if(second->next == tail->next){
+        return first;
+    }else{
+        return first->next;
+    }
+}
+}
+
 void print(node* const &tail) {
     if (tail == nullptr) return;
 
@@ -114,5 +139,9 @@ int main(){
     print(tail);
     reverse(tail);
     print(tail);
+    cout<<(findMiddle(tail))->data<<endl;
+    insertAtPos(tail, 10, 99);
+    print(tail);
+    cout<<(findMiddle(tail))->data<<endl;
     return 0;
 }
