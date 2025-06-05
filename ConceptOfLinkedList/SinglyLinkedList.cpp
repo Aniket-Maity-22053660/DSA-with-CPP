@@ -79,6 +79,33 @@ void reverse(node* &head){
     head = back;
 
 }
+node* reverseInKthStage(node* &head, int cnt){
+    node* temp = head;
+    int count = 0;
+    while(temp != nullptr){
+        temp = temp->next;
+        count++;
+    }
+    if(count < cnt){
+        return;
+    }
+    
+    node* back = nullptr;
+    node* current = head;
+    node* front = nullptr;
+    count = 0;
+    while(current != nullptr && count < cnt){
+        front = current->next;
+        current->next = back;
+        back = current;
+        current = front;
+        count++;
+    }
+    if(front != nullptr){
+        head->next = reverseInKthStage(head, cnt);
+    }
+    return prev;
+}
 
 int main(){
     node *node1 = new node(12);
