@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<map>
 using namespace std;
 
 class node{
@@ -116,6 +116,22 @@ bool isCircular(node* head){
         }
     }while(temp != head);
     return true;
+}
+
+bool isLoopPresent(node* head){
+    map<node*, bool> visited;
+    node* temp = head;
+    while(temp != nullptr){
+        if(visited[temp] != true){
+        visited[temp] = true;
+        }
+    else{
+        return true;
+    }
+        temp = temp->next;
+    }
+    return false;
+
 }
 
 int main(){
