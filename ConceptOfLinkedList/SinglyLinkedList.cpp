@@ -158,5 +158,6 @@ int main(){
     head = reverseInKthStage(head, 7);
     print(head);
     cout<<"Is this list circular? "<<isCircular(head)<<endl;
+    cout<<"Is there any loop? "<<isLoopPresent(head)<<endl;
     return 0;
 }

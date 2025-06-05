@@ -39,6 +39,6 @@ int main(){
             start = mid  + 1;
         }
     }
-    cout<<"Maximum number of books that can be alocated to a student which is minimum is "<<ans<<endl;
+    cout<<"Maximum number of pages that can be allocated to a student which is minimum is "<<ans<<endl;
     return 0;
 }

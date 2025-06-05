@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 
 using namespace std;
 class node{
@@ -114,7 +115,20 @@ bool isCircular(node* head){
     }while(temp != head);
     return true;
 }
-
+ bool isLoopPresent(node* head){
+    node* temp = head;
+    map<node*, bool> visited;
+    do{
+        if(visited[temp] != true){
+        visited[temp] = true;
+        }
+        else{
+            return true;
+        }
+        temp = temp->next;
+    }while(temp != head);
+    return false;
+ }
 void print(node* const &tail) {
     if (tail == nullptr) return;
 
@@ -155,5 +169,6 @@ int main(){
     print(tail);
     cout<<(findMiddle(tail))->data<<endl;
     cout<<"Is it a circular list? "<<isCircular(tail->next)<<endl;
+    cout<<"Is there any loop? "<<isLoopPresent(tail->next)<<endl;
     return 0;
 }

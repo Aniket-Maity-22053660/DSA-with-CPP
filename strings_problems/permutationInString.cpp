@@ -19,7 +19,7 @@ bool checkPermutation(string str1, string str2){
     if(cnt1 == cnt2){
         return true;
     }
-
+8
     for(int i = str2.length() ; i < str1.length() ; i++){ 
         cnt1[str1[i] - 'a']++;
         cnt1[str1[i - str2.length()] - 'a']--;
