@@ -104,6 +104,17 @@ node* findMiddle(node*tail){
 }
 }
 
+bool isCircular(node* head){
+    node* temp = head;
+    do{
+        temp = temp->next;
+        if(temp == nullptr){
+            return false;
+        }
+    }while(temp != head);
+    return true;
+}
+
 void print(node* const &tail) {
     if (tail == nullptr) return;
 
@@ -143,5 +154,6 @@ int main(){
     insertAtPos(tail, 10, 99);
     print(tail);
     cout<<(findMiddle(tail))->data<<endl;
+    cout<<"Is it a circular list? "<<isCircular(tail->next)<<endl;
     return 0;
 }

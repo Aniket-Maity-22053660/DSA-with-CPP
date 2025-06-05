@@ -107,6 +107,17 @@ node* reverseInKthStage(node* head, int cnt){
     return back;
 }
 
+bool isCircular(node* head){
+    node* temp = head;
+    do{
+        temp = temp->next;
+        if(temp == nullptr){
+            return false;
+        }
+    }while(temp != head);
+    return true;
+}
+
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -130,6 +141,6 @@ int main(){
     print(head);
     head = reverseInKthStage(head, 7);
     print(head);
-
+    cout<<"Is this list circular? "<<isCircular(head)<<endl;
     return 0;
 }

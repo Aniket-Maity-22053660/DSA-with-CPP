@@ -123,6 +123,17 @@ void reverse(node* &head) {
             */
 }
 
+bool isCircular(node* head){
+    node* temp = head;
+    do{
+        temp = temp->next;
+        if(temp == nullptr){
+            return false;
+        }
+    }while(temp != head);
+    return true;
+}
+
 
 void print(node* head){
     while(head != nullptr){
@@ -165,5 +176,6 @@ int main(){
     print(head);
     reverse(head);
     print(head);
+    cout<<"Is this list circular? "<<isCircular(head)<<endl;
     return 0;
 }
