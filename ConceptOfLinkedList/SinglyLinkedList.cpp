@@ -134,6 +134,22 @@ bool isLoopPresent(node* head){
 
 }
 
+bool floydsCycleDetection(node* head){
+    
+    if(head == nullptr){
+        return false;
+    }
+    node*slow = head;
+    node*fast = head;
+    while(fast != nullptr && fast->next != nullptr){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            return true;
+        }
+    }
+    return false;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -159,5 +175,6 @@ int main(){
     print(head);
     cout<<"Is this list circular? "<<isCircular(head)<<endl;
     cout<<"Is there any loop? "<<isLoopPresent(head)<<endl;
+    cout<<"Using floyd's cycle detection algorithm? "<<floydsCycleDetection(head)<<endl;
     return 0;
 }
