@@ -253,7 +253,7 @@ int main(){
     //breakTheLoop(head);
     cout<<"Using floyd's cycle detection algorithm? ";
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
-    //print(head);
+    print(head);
     node* node2 = new node(1);
     node* head1 = node2;
     insertAtTail(head1, 1);
