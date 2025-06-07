@@ -254,7 +254,7 @@ list<node*> splitListInKparts(node* head, int k){
         front = front->next;
         count--;
     }
-    node* temp = front;
+    node* temp = front; 
     front = front->next;
     temp->next = back;
     li.push_back(temp);
