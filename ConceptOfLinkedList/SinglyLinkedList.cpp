@@ -1,5 +1,6 @@
 #include<iostream>
 #include<map>
+#include<list>
 using namespace std;
 
 class node{
@@ -40,7 +41,7 @@ void print(node* head){
     while(head != nullptr){
         cout<<head->data;
         if(head->next != nullptr){
-            cout<<", ";
+            cout<<" -> ";
         }
         else{
             cout<<'\n';
@@ -191,6 +192,30 @@ void breakTheLoop(node* head){
     }
     return;
 }
+void deleteDuplicates(node* &head){
+    if(head == nullptr){
+        return;
+    }
+    node* prev = head;
+    node* temp = head;
+    list<node*> li;
+    int j = 0;
+    while(temp != nullptr && temp->next != nullptr){
+        temp = temp->next;
+        if(prev->data == temp->data){
+            prev->next = temp->next;
+            li.push_back(temp); 
+        }
+        else{
+            prev = temp;
+        }
+    }
+    list<node*>:: iterator it = li.begin();
+    for(; it != li.end() ; it++){
+        delete (*it);
+    }
+    li.clear();
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -229,5 +254,16 @@ int main(){
     cout<<"Using floyd's cycle detection algorithm? ";
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
     //print(head);
+    node* node2 = new node(1);
+    node* head1 = node2;
+    insertAtTail(head1, 1);
+    insertAtTail(head1, 1);
+    insertAtTail(head1, 2);
+    insertAtTail(head1, 3);
+    
+    print(head1);
+    deleteDuplicates(head1);
+    cout<<"After deleting the duplicate elements: ";
+    print(head1);
     return 0;
 }
