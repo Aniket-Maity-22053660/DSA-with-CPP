@@ -175,6 +175,22 @@ node* getLoopNode(node* head){
     }
     return temp2;
 }
+void breakTheLoop(node* head){
+    node* temp2 = floydsCycleDetection(head);
+    if(temp2){
+        node* temp1 = head;
+        node* temp3 = nullptr;
+        while(temp1 != temp2){
+            temp3 = temp2;
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+        temp3->next = nullptr;
+    }else{
+        return;
+    }
+    return;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -209,5 +225,9 @@ int main(){
     createLoop(head, 3);
     //print(head);
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
+    //breakTheLoop(head);
+    cout<<"Using floyd's cycle detection algorithm? ";
+    floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
+    //print(head);
     return 0;
 }
