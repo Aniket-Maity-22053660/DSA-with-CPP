@@ -134,10 +134,10 @@ bool isLoopPresent(node* head){
 
 }
 
-bool floydsCycleDetection(node* head){
+node* floydsCycleDetection(node* head){
     
     if(head == nullptr){
-        return false;
+        return nullptr;
     }
     node*slow = head;
     node*fast = head;
@@ -145,10 +145,35 @@ bool floydsCycleDetection(node* head){
         slow = slow->next;
         fast = fast->next->next;
         if(slow == fast){
-            return true;
+            return slow;
         }
     }
-    return false;
+    return nullptr;
+}
+void createLoop(node* head, int pos){
+    node* temp = head;
+    node* flag = nullptr;
+    while(temp->next != nullptr){
+        if(pos == 1){
+            flag = temp;
+        }
+        temp = temp->next;
+        pos--;
+    }
+    temp->next = flag;
+}
+node* getLoopNode(node* head){
+    node* temp2 = floydsCycleDetection(head);
+    if(temp2){
+    node* temp1 = head;
+    while(temp1 != temp2){
+        temp1 = temp1->next;
+        temp2 = temp2->next;
+    }
+    }else{
+        return nullptr;
+    }
+    return temp2;
 }
 int main(){
     node *node1 = new node(12);
@@ -175,6 +200,14 @@ int main(){
     print(head);
     cout<<"Is this list circular? "<<isCircular(head)<<endl;
     cout<<"Is there any loop? "<<isLoopPresent(head)<<endl;
-    cout<<"Using floyd's cycle detection algorithm? "<<floydsCycleDetection(head)<<endl;
+    cout<<"Using floyd's cycle detection algorithm? ";
+    floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(floydsCycleDetection(head))->data<<"."<<endl:cout<<"No!"<<endl;
+    print(head);
+    insertAtTail(head, 30);
+    insertAtTail(head, 35);
+    print(head);
+    createLoop(head, 3);
+    //print(head);
+    floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
     return 0;
 }

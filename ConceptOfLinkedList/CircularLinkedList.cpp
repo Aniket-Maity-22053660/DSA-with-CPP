@@ -129,6 +129,26 @@ bool isCircular(node* head){
     }while(temp != head);
     return false;
  }
+
+ bool floydsCycleDetection(node* head){
+    if(head == nullptr){
+        return false;
+    }
+    node* slow = head;
+    node* fast = head;
+    if(fast->next == head){
+        return true;
+    }
+    do{
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            return true;
+        }
+    }while(fast != head && fast->next != head);
+
+    return false;
+ }
 void print(node* const &tail) {
     if (tail == nullptr) return;
 
