@@ -239,6 +239,48 @@ void rmvDuplicatesFromUnsortedList(node* &head){
         return;
     }
 }
+
+list<node*> splitListInKparts(node* head, int k){
+    list<node*> li; 
+    if(head != nullptr){
+        cout<<"After splitting the list in upto "<<k<<" nodes in each part:-"<<endl;
+    node* front = head;
+    node* back = head;
+    
+    int count;
+    while(front != nullptr && back != nullptr){
+        count = k;
+    while(front->next != nullptr && count > 1){
+        front = front->next;
+        count--;
+    }
+    node* temp = front;
+    front = front->next;
+    temp->next = back;
+    li.push_back(temp);
+    back = front;
+    }
+    }
+    else{
+        cout<<"Sorry! there are nodes in the list."<<endl;
+    }
+    return li;
+
+}
+void printCircular(node* const &tail) {
+    if (tail == nullptr) return;
+
+    node* current = tail->next; // Start from head
+    do {
+        cout << current->data;
+        current = current->next;
+        if (current != tail->next) {
+            cout << " -> ";
+        } else {
+            cout << '\n';
+        }
+    } while (current != tail->next);
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -289,5 +331,11 @@ int main(){
     rmvDuplicatesFromUnsortedList(head1);
     cout<<"After deleting the duplicate elements: ";
     print(head1);
+    list<node* > splitted = splitListInKparts(head, 2);
+    list<node*>:: iterator it = splitted.begin();
+    for(;it != splitted.end() ; it++){
+        printCircular(*it);
+    }
+       
     return 0;
 }
