@@ -250,7 +250,7 @@ list<node*> splitListInKparts(node* head, int k){
     int count;
     while(front != nullptr && back != nullptr){
         count = k;
-    while(front->next != nullptr && count > 1){
+    while(front->next != nullptr && count > 1){ 
         front = front->next;
         count--;
     }
