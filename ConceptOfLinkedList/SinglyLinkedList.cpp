@@ -216,6 +216,29 @@ void deleteDuplicates(node* &head){
     }
     li.clear();
 }
+void rmvDuplicatesFromUnsortedList(node* &head){
+    if(head != nullptr && head->next != nullptr){
+    node* temp = head->next;
+    node* prev = head;
+    map<int, bool> mp;
+    mp.insert({head->data, true});
+    while(temp != nullptr){
+        if(mp.count(temp->data) > 0){
+            prev->next = temp->next;
+            node*  temp1 = temp;
+            temp = temp->next;
+            delete temp1;
+        }
+        else{
+        mp.insert({temp->data, true});
+        prev = temp;
+        temp = temp->next;
+        }
+    }
+    }else{
+        return;
+    }
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -250,7 +273,7 @@ int main(){
     createLoop(head, 3);
     //print(head);
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
-    //breakTheLoop(head);
+    breakTheLoop(head);
     cout<<"Using floyd's cycle detection algorithm? ";
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
     print(head);
@@ -262,7 +285,8 @@ int main(){
     insertAtTail(head1, 3);
     
     print(head1);
-    deleteDuplicates(head1);
+    //deleteDuplicates(head1);
+    rmvDuplicatesFromUnsortedList(head1);
     cout<<"After deleting the duplicate elements: ";
     print(head1);
     return 0;
