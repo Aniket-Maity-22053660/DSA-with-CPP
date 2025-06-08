@@ -346,6 +346,45 @@ node* sort0s1s2s(node* head){
     }
     return new_head;
 }
+
+node* mergetwoSortedList(node* head1, node* head2){
+    node* new_list = nullptr;
+    while(head1 != nullptr && head2 != nullptr){
+        if(head1->data <= head2->data){
+            if(new_list == nullptr){
+                new_list = new node(head1->data);
+            }else{
+                insertAtTail(new_list, head1->data);
+            }
+            head1 = head1->next;
+        }else{
+            if(new_list == nullptr){
+                new_list = new node(head2->data);
+            }else{
+                insertAtTail(new_list, head2->data);
+            }
+            head2 = head2->next;
+        }
+    }
+        
+        while(head1 != nullptr){
+            if(new_list == nullptr){
+                new_list = new node(head1->data);
+            }else{
+                insertAtTail(new_list, head1->data);
+            }
+            head1 = head1->next;
+        }
+        while(head2 != nullptr){
+            if(new_list == nullptr){
+                new_list = new node(head2->data);
+            }else{
+                insertAtTail(new_list, head2->data);
+            }
+            head2 = head2->next;
+        }
+        return new_list;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -403,16 +442,34 @@ int main(){
     }
     node* node3 = new node(0);
     node* head3 = node3;
+    node* node4 = new node(0);
+    node* head4 = node4;
     for(int i = 0 ; i < 10 ; i++){
         if(i%3 == 0)
         insertAtTail(head3, 0);
-        else if(i%2 == 0)
-        insertAtTail(head3, 1);
+        else if(i%2 == 0){
+        //insertAtTail(head3, 1);
+        }
         else
         insertAtTail(head3, 2);
     }
+    for(int i = 0 ; i < 15 ; i++){
+        if(i%5 == 0){
+            insertAtTail(head4, 0);
+        }else if(i%2 == 0){
+            insertAtTail(head4, 1);
+        }else{
+            insertAtTail(head4, 2);
+        }
+    }
+    cout<<"Before Sorting:- "<<endl;
+    cout<<"First List: ";
     print(head3);
+    cout<<"Second List: ";
+    print(head4);
     head3 = sort0s1s2s(head3);
+    head4 = sort0s1s2s(head4);
+    cout<<"After Sorting"<<endl;
     if(head3 != nullptr){
         node* temp = head3;
         print(temp);
@@ -420,5 +477,12 @@ int main(){
     else{
         cout<<"Process terminated!"<<endl;
     }
+    if(head4 != nullptr){
+        node* temp = head4;
+        print(temp);
+    }
+    cout<<"Let's Merge!"<<endl;
+    node* merged = mergetwoSortedList(head3, head4);
+    print(merged);
     return 0;
 }
