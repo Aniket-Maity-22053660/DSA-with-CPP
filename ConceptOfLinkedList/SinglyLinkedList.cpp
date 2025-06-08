@@ -49,22 +49,30 @@ void print(node* head){
         head = head->next;
     }
 }
-void del(node* &head, int data){
+int del(node* &head, int data){
+    int pos = 1;
     if(head == nullptr)
-    return;
+    return -1;
     if(head->data == data){
         node* temp = head;
         head = head->next;
         delete temp;
-        return;
+        return pos;
     }
     node* temp = head;
-    while(temp->next->data != data){
+    while(temp != nullptr && temp->next->data != data){
         temp = temp->next;
+        pos++;
     }
+    if(temp != nullptr){
     node* temp1 = temp->next;
     temp->next = temp1->next;
     delete temp1;
+    return pos+1;
+    }
+    else{
+        return -1;
+    }
 }
 void reverse(node* &head){
     node* back = nullptr;
@@ -402,7 +410,9 @@ int main(){
     print(head);
     insertAtPos(head, 2, 20);
     print(head);
-    del(head, 99);
+    int pos = del(head, 99);
+    //cout<<"Element "
+    pos == -1?cout<<"Sorry the element was not found.":cout<<"Element was deleted from the position "<<pos<<endl;
     print(head);
     reverse(head);
     print(head);
