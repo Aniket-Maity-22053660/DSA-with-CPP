@@ -281,6 +281,69 @@ void printCircular(node* const &tail) {
         }
     } while (current != tail->next);
 }
+node* sort0s1s2s(node* head){
+    node* zeros = nullptr;
+    node* ones = nullptr;
+    node* twos = nullptr;
+    node * track = nullptr;
+    node* new_head = nullptr;
+    node* temp = head;
+    while(temp != nullptr){
+        if(temp->data == 0){
+            if(zeros == nullptr){
+                zeros = new node(0);
+            }
+            else{
+                insertAtTail(zeros, 0);
+            }
+        }
+        else if(temp->data == 1){
+            if(ones == nullptr){
+                ones = new node(1);
+            }else{
+                insertAtTail(ones, 1);
+            }
+        }
+        else if(temp->data ==2){
+            if(twos == nullptr){
+                twos = new node(2);
+            }else{
+                insertAtTail(twos, 2);
+            }
+        }
+        else{
+            cout<<"Sorry unexpected input detected!"<<endl;
+            return new_head;
+        }
+        temp = temp->next;
+    }
+    if(zeros != nullptr){
+        new_head = zeros;
+        track = zeros;
+        while(track->next != nullptr){
+            track = track->next;
+        }
+        track->next = ones;
+    }
+    if(ones != nullptr){
+        if(track == nullptr)
+        new_head = ones;
+        track = ones;
+        while(track->next != nullptr){
+            track = track->next;
+        }
+        track->next = twos;
+    }
+    if(twos != nullptr){
+        if(track == nullptr)
+        new_head = twos;
+        track = twos;
+        while(twos->next != nullptr){
+            track = track->next;
+        }
+    }
+    return new_head;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
