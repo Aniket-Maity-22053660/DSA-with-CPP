@@ -323,22 +323,24 @@ node* sort0s1s2s(node* head){
         while(track->next != nullptr){
             track = track->next;
         }
-        track->next = ones;
     }
     if(ones != nullptr){
         if(track == nullptr)
         new_head = ones;
+        else
+        track->next = ones;
         track = ones;
         while(track->next != nullptr){
             track = track->next;
         }
-        track->next = twos;
     }
     if(twos != nullptr){
         if(track == nullptr)
         new_head = twos;
+        else
+        track->next = twos;
         track = twos;
-        while(twos->next != nullptr){
+        while(track->next != nullptr){
             track = track->next;
         }
     }
@@ -399,6 +401,24 @@ int main(){
     for(;it != splitted.end() ; it++){
         printCircular(*it);
     }
-       
+    node* node3 = new node(0);
+    node* head3 = node3;
+    for(int i = 0 ; i < 10 ; i++){
+        if(i%3 == 0)
+        insertAtTail(head3, 0);
+        else if(i%2 == 0)
+        insertAtTail(head3, 1);
+        else
+        insertAtTail(head3, 2);
+    }
+    print(head3);
+    head3 = sort0s1s2s(head3);
+    if(head3 != nullptr){
+        node* temp = head3;
+        print(temp);
+    }
+    else{
+        cout<<"Process terminated!"<<endl;
+    }
     return 0;
 }
