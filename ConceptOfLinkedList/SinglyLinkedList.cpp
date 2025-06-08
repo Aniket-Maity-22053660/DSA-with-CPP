@@ -1,6 +1,7 @@
 #include<iostream>
 #include<map>
 #include<list>
+#include<climits>
 using namespace std;
 
 class node{
@@ -159,9 +160,10 @@ node* floydsCycleDetection(node* head){
     }
     return nullptr;
 }
-void createLoop(node* head, int pos){
+int createLoop(node* head, int pos){
     node* temp = head;
     node* flag = nullptr;
+    int keep = pos;
     while(temp->next != nullptr){
         if(pos == 1){
             flag = temp;
@@ -170,6 +172,7 @@ void createLoop(node* head, int pos){
         pos--;
     }
     temp->next = flag;
+    return keep;
 }
 node* getLoopNode(node* head){
     node* temp2 = floydsCycleDetection(head);
@@ -184,11 +187,11 @@ node* getLoopNode(node* head){
     }
     return temp2;
 }
-void breakTheLoop(node* head){
+int breakTheLoop(node* head){
     node* temp2 = floydsCycleDetection(head);
+    node* temp3 = nullptr;
     if(temp2){
         node* temp1 = head;
-        node* temp3 = nullptr;
         while(temp1 != temp2){
             temp3 = temp2;
             temp1 = temp1->next;
@@ -196,9 +199,9 @@ void breakTheLoop(node* head){
         }
         temp3->next = nullptr;
     }else{
-        return;
+        return INT_MIN;
     }
-    return;
+    return temp3->data;
 }
 void deleteDuplicates(node* &head){
     if(head == nullptr){
@@ -426,10 +429,12 @@ int main(){
     insertAtTail(head, 30);
     insertAtTail(head, 35);
     print(head);
-    createLoop(head, 3);
+    int pos1 = createLoop(head, 3);
+    cout<<"A loop was created at position "<<pos1<<"!"<<endl;
     //print(head);
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
-    breakTheLoop(head);
+    int pos2 = breakTheLoop(nullptr);
+    pos2 != INT_MIN ? cout<<"The loop was successfully broken with the element "<<pos2<<"!"<<endl : cout<<"Failed to break the loop!"<<endl;
     cout<<"Using floyd's cycle detection algorithm? ";
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
     print(head);
