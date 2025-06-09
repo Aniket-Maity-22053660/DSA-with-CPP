@@ -396,6 +396,47 @@ node* mergetwoSortedList(node* head1, node* head2){
         }
         return new_list;
 }
+node* findMiddle(node* head){
+    if(head == nullptr)
+    return nullptr;
+    node* fast = head;
+    node* slow = head;
+
+    while(fast->next != nullptr && fast->next->next != nullptr){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+node* reverseAfterK(node* head){
+    if(head == nullptr || head->next == nullptr)
+    return nullptr;
+    node* middle = head->next;
+    node* prev = nullptr;
+    node* front = middle;
+
+    while(middle != nullptr){
+        front = front->next;
+        middle->next = prev;
+        prev = middle;
+        middle = front;
+    }
+    return prev;
+
+}
+bool checkPalindrome(node* head){
+    node* middle = findMiddle(head);
+    node* second = reverseAfterK(middle);
+
+    while(second != nullptr){
+        if(head->data != second->data){
+            return false;
+        }
+        head = head->next;
+        second = second->next;
+    }
+    return true;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -433,7 +474,7 @@ int main(){
     cout<<"A loop was created at position "<<pos1<<"!"<<endl;
     //print(head);
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
-    int pos2 = breakTheLoop(nullptr);
+    int pos2 = breakTheLoop(head);
     pos2 != INT_MIN ? cout<<"The loop was successfully broken with the element "<<pos2<<"!"<<endl : cout<<"Failed to break the loop!"<<endl;
     cout<<"Using floyd's cycle detection algorithm? ";
     floydsCycleDetection(head)?cout<<"Yes! "<<"The loop started at "<<(getLoopNode(head))->data<<"."<<endl:cout<<"No!"<<endl;
@@ -499,5 +540,12 @@ int main(){
     cout<<"Let's Merge!"<<endl;
     node* merged = mergetwoSortedList(head3, head4);
     print(merged);
+    node* node5 = new node(90);
+    node* head5 = node5;
+    insertAtTail(head5, 2);
+    insertAtTail(head5, 3);
+    insertAtTail(head5, 2);
+    insertAtTail(head5, 1);
+    checkPalindrome(head5) ? cout<<"Yes! this list is a palindrome."<<endl : cout<<"This list is not a palindrome."<<endl;
     return 0;
 }
