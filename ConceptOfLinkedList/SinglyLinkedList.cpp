@@ -506,6 +506,66 @@ node* addTwoLinkedList(node* list1, node* list2){
     }
     return sum;
 }
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+
+class Solution {
+public:
+    void insertAtTail(Node* &head, int data){
+        if(head == nullptr)
+        {
+            Node* temp = new Node(data);
+            head = temp;
+            return;
+        }
+        Node* temp = new Node(data);
+        Node* temp1 = head;
+        while(temp1->next != nullptr){
+            temp1 = temp1->next;
+        }
+        temp1->next = temp;
+    }
+    Node* copyRandomList(Node* head) {
+        if(head == nullptr)
+        return nullptr;
+        Node* new_node = nullptr;
+        Node* temp = head;
+        
+        while(temp != nullptr){
+            insertAtTail(new_node, temp->val);
+            temp = temp->next;
+        }
+        map<Node*, Node*> mp;
+        temp = head;
+        Node* temp1 = new_node;
+        while(temp != nullptr && temp1 != nullptr){
+            mp[temp] = temp1;
+            temp = temp->next;
+            temp1 = temp1->next;
+        }
+        temp = new_node;
+        temp1 = head;
+        while(temp != nullptr){
+            temp->random = mp[temp1->random];
+            temp = temp->next;
+            temp1 = temp1->next;
+        }
+        return new_node;
+    }
+};
 int main(){
     node *node1 = new node(12);
     node *head = node1;
