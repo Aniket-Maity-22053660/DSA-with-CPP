@@ -437,6 +437,75 @@ bool checkPalindrome(node* head){
     }
     return true;
 }
+node* addTwoLinkedList(node* list1, node* list2){
+    int carry = 0;
+    node* head1 = list1;
+    node* head2 = list2;
+
+    node* prev = nullptr;
+    node* mid = head1;
+    node* front = head1;
+
+    while(mid != nullptr){
+        front = front->next;
+        mid->next = prev;
+        prev = mid;
+        mid = front;
+    }
+    node* tail1 = prev;
+    prev = nullptr;
+    mid = head2;
+    front = head2;
+    while(mid != nullptr){
+        front = front->next;
+        mid->next = prev;
+        prev = mid;
+        mid = front;
+    }
+    node* tail2 = prev;
+    node* sum = nullptr;
+    while(tail1 != nullptr && tail2 != nullptr){ 
+        int total = (tail1->data + tail2->data) + carry;
+        int add = total % 10;
+        
+        if(sum == nullptr){
+            sum = new node(add);
+        }else{
+            insertAtHead(sum, add);
+        }
+        carry = total / 10;
+        tail1 = tail1->next;
+        tail2 = tail2->next;
+    }
+    while(tail1 != nullptr){
+        int total = tail1->data + carry;
+        int add = total % 10;
+        if(sum == nullptr){
+            sum = new node(add);
+        }
+        else{
+            insertAtHead(sum, add);
+        }
+        carry = total / 10;
+        tail1 = tail1->next;
+    }
+
+    while(tail2 != nullptr){
+        int total = tail2->data + carry;
+        int add = total % 10;
+        if(sum == nullptr){
+            sum = new node(add);
+        }else{
+            insertAtHead(sum, add);
+        }
+        carry = total / 10;
+        tail2 = tail2->next;
+    }
+    if(carry != 0){
+        insertAtHead(sum, carry);
+    }
+    return sum;
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -547,5 +616,21 @@ int main(){
     insertAtTail(head5, 2);
     insertAtTail(head5, 1);
     checkPalindrome(head5) ? cout<<"Yes! this list is a palindrome."<<endl : cout<<"This list is not a palindrome."<<endl;
+    node* node6 = new node(9);
+    node* head6 = node6;
+    insertAtTail(head6, 9);
+    insertAtTail(head6, 9);
+    node* node7 = new node(9);
+    node* head7 = node7;
+    insertAtTail(head7, 9);
+    insertAtTail(head7, 9);
+    cout<<"LinkedList-1: ";
+    print(head6);
+    cout<<"LinkedList-2: ";
+    print(head7);
+    node* sum = addTwoLinkedList(head6, head7);
+    cout<<"SUM: ";
+    print(sum);
+    
     return 0;
 }
