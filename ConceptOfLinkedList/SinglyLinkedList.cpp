@@ -10,21 +10,38 @@ class node{
     node(int data){
         this->data = data;
         this->next = nullptr;
+        this->bottom = nullptr;
     }
     node* next;
+    node* bottom;
 };
+
+node* insertAtBottom(node* head, int data){
+    if(head != nullptr && head->bottom != nullptr){
+        head->bottom = insertAtBottom(head->bottom, data);
+    }else{
+        if(head != nullptr){
+        node* temp = new node(data);
+        head->bottom = temp;
+        }
+    }
+    return head;
+}
 void insertAtHead(node* &head, int data){
     node *temp = new node(data);
     temp->next = head;
     head = temp;
 }
 
-void insertAtTail(node* head, int data){
+node* insertAtTail(node* head, int data){
     node* temp = new node(data);
+    if (head == nullptr)
+        return temp;
     while(head->next != nullptr){
         head = head->next;
     }
     head->next = temp;
+    return temp;
 }
 void insertAtPos(node* &head, int pos, int data){
     node* temp = new node(data);
@@ -573,7 +590,7 @@ node* merge(node* left, node* right){
     if(!right) return left;
 
     node* result = nullptr;
-    if(left->data < right->data){
+    if(left->data <= right->data){
         result = left;
         result->next = merge(left->next, right);
     }else{
@@ -595,6 +612,46 @@ node* mergeSort(node* head){
         return head;
     }
 }
+
+node* mergeBottom(node* list1, node* list2){
+    if(!list1)
+    return list2;
+    if(!list2)
+    return list1;
+
+    node* res = nullptr;
+    if(list1->data < list2->data){
+        res = list1;
+        res->bottom = mergeBottom(list1->bottom, list2);
+    }else{
+        res = list2;
+        res->bottom = mergeBottom(list1, list2->bottom);
+    }
+    return res;
+}
+
+node* flattenLinkedList(node* & head){
+    if(head != nullptr && head->next != nullptr){
+    node* right = head->next;
+    head->next = nullptr;
+    right = flattenLinkedList(right);
+    return mergeBottom(head, right);
+    }else{
+        return head;
+    }
+}
+void printBottom(node* head) {
+    cout<<"Flattened LinkedList:  ";
+    while (head != nullptr) {
+        cout << head->data;
+        head = head->bottom;
+        if(head != nullptr){
+            cout<<" -> ";
+        }
+    }
+    cout << endl;
+}
+
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -732,5 +789,36 @@ int main(){
     cout<<"After Sorting:-"<<endl;
     head8 = mergeSort(head8);
     print(head8);
+    /*
+
+    5->10->19->28
+    |  |   |   |
+    7  20  22  35
+    |  |   |   |
+    8      50  40
+    |          |
+    30         45
+    
+    */
+
+    node* node9 = new node(5);
+    node* head9 = node9;
+    insertAtBottom(head9, 7);
+    insertAtBottom(head9, 8);
+    insertAtBottom(head9, 30);
+    node* newHead = insertAtTail(head9, 10);
+    insertAtBottom(newHead, 20);
+    newHead = insertAtTail(newHead, 19);
+    insertAtBottom(newHead, 22);
+    insertAtBottom(newHead, 50);
+    newHead = insertAtTail(newHead, 28);
+    insertAtBottom(newHead, 35);
+    insertAtBottom(newHead, 40);
+    insertAtBottom(newHead, 45);
+
+    newHead = flattenLinkedList(head9);
+
+    printBottom(newHead);
+    
     return 0;
 }
