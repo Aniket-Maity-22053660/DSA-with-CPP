@@ -521,7 +521,7 @@ public:
     }
 };
 */
-
+/*
 class Solution {
 public:
     void insertAtTail(Node* &head, int data){
@@ -566,6 +566,35 @@ public:
         return new_node;
     }
 };
+*/
+
+node* merge(node* left, node* right){
+    if(!left) return right;
+    if(!right) return left;
+
+    node* result = nullptr;
+    if(left->data < right->data){
+        result = left;
+        result->next = merge(left->next, right);
+    }else{
+        result = right;
+        right->next = merge(left, right->next);
+    }
+    return result;
+}
+
+node* mergeSort(node* head){
+    if(head != nullptr && head->next != nullptr){
+        node* middle = findMiddle(head);
+        node* right = middle->next;
+        middle->next = nullptr;
+        node* left = mergeSort(head);
+        right = mergeSort(right);
+        return merge(left, right);
+    }else{
+        return head;
+    }
+}
 int main(){
     node *node1 = new node(12);
     node *head = node1;
@@ -691,6 +720,17 @@ int main(){
     node* sum = addTwoLinkedList(head6, head7);
     cout<<"SUM: ";
     print(sum);
-    
+    node* node8 = new node(8);
+    node* head8 = node8;
+    insertAtTail(head8, 2);
+    insertAtTail(head8, 3);
+    insertAtTail(head8, 1);
+    insertAtTail(head8, 10);
+    insertAtTail(head8, 1);
+    cout<<"Before Sorting:- "<<endl;
+    print(head8);
+    cout<<"After Sorting:-"<<endl;
+    head8 = mergeSort(head8);
+    print(head8);
     return 0;
 }
