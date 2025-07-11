@@ -7,10 +7,11 @@
 using namespace std;
 template <class T>
 class Stack{
-    int size;
+    
     T *arr;
     int topIndex;
     public:
+    int size;
     Stack(T size){
         this->size = size;
         arr = new T[size];
@@ -34,7 +35,7 @@ void Stack<T>:: push(T data){
 template<class T>
 T Stack<T>:: pop(){
     if(topIndex >= 0){
-        cout<<arr[topIndex]<<endl;
+        //cout<<arr[topIndex]<<endl;
         T value = arr[topIndex];
         topIndex--;  
         return value; 
@@ -47,7 +48,7 @@ T Stack<T>:: pop(){
 template<class T>
 T Stack<T>:: top(){
     if(topIndex >= 0){
-        cout<<arr[topIndex]<<endl;
+        //cout<<arr[topIndex]<<endl;
         return arr[topIndex];
     }else{
         cout<<"Stack underflow!"<<endl;
