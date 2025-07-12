@@ -16,6 +16,12 @@ int main()
             ans[j][(arr.size()-1)-i] = arr[i][j];
         }
     }
+
+    for(int i = 0 ; i < Col ; i++){
+        for(int j = 0 ; j < Row ; j++){
+            ans[i][j] = arr[(Row-1)-j][i];
+        }
+    }
     
     list<list<int>> li;
 

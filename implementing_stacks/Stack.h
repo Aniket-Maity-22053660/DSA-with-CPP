@@ -20,6 +20,7 @@ class Stack{
     void push(T data);
     T pop();
     T top();
+    bool isEmpty();
 };
 
 template<class T>
@@ -53,6 +54,15 @@ T Stack<T>:: top(){
     }else{
         cout<<"Stack underflow!"<<endl;
         return T();
+    }
+}
+
+template<class T>
+bool Stack<T>:: isEmpty(){
+    if(topIndex == -1){
+        return true;
+    }else{
+        return false;
     }
 }
 

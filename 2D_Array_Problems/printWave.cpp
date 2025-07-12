@@ -16,6 +16,15 @@ int main(){
             }
         }
     }
+    for (int i = 0 ; i < 4 ; i++){
+        for(int j = 0 ; j < (sizeof(arr)/sizeof(int)/4) ; j++){
+            if(i%2 != 0){
+                cout<<arr[j][i]<<" ";
+            }else{
+                cout<<arr[(sizeof(arr)/sizeof(int))/4 - 1 - j][i]<<" ";
+            }
+        }
+    }
     cout<<endl;
     return 0;
 }
