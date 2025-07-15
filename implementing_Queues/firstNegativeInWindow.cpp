@@ -44,9 +44,5 @@ int main(){
     cout<<"Array of first negatives in window of "<<window<<" size: ";
     print(ans);
     cout<<'\n';
-
-
-
-
     return 0;
 }
