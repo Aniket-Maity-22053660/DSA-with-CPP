@@ -6,6 +6,8 @@
 #include "postOrderTraversal.h"
 #include "countLeafNodes.h"
 #include "findHeight.h"
+#include "findDiameter.h"
+#include "IsBalanced.h"
 
 using namespace std;
 
@@ -43,5 +45,14 @@ int main(){
     FindHeight* objHeight = new FindHeight();
     cout<<objHeight->find(root);
     cout<<'\n';
+    cout<<'\n';
+    FindDiameter* objDiameter = new FindDiameter();
+    cout<<"Diameter of the tree: ";
+    cout<<objDiameter->findDiameter(root);
+    cout<<'\n';
+    cout<<'\n';
+    cout<<"Balanced tree?  ";
+    CheckIsBalanced* objBalanced = new CheckIsBalanced();
+    cout<<(objBalanced->check(root) ? "Yes!" : "No!")<<endl;
     return 0;
 }
