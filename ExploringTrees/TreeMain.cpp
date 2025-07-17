@@ -4,7 +4,8 @@
 #include "preOrderTraversal.h"
 #include "inOrderTraversal.h"
 #include "postOrderTraversal.h"
-
+#include "countLeafNodes.h"
+#include "findHeight.h"
 
 using namespace std;
 
@@ -30,6 +31,17 @@ int main(){
     cout<<"Post-order tree traversal:- "<<endl;
     PostOrderTraversal* objPost= new PostOrderTraversal();
     objPost->Traverse(root);
+    cout<<'\n';
+    cout<<'\n';
+    cout<<"Count of leaf nodes: ";
+    CountLeafNodes* objCount = new CountLeafNodes();
+    objCount->countLeaf(root);
+    cout<<objCount->getCount();
+    cout<<'\n';
+    cout<<'\n';
+    cout<<"Height of the tree: ";
+    FindHeight* objHeight = new FindHeight();
+    cout<<objHeight->find(root);
     cout<<'\n';
     return 0;
 }
