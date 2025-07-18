@@ -12,6 +12,7 @@
 #include "IsIdentical.h"
 #include "IsSumTree.h"
 #include "printZigZagTree.h"
+#include "printBoundaryNodes.h"
 
 using namespace std;
 
@@ -79,6 +80,11 @@ int main(){
     for(it = vec.begin() ; it != vec.end() ; it++){
         cout<<*it<<" ";
     }
+    cout<<'\n';
+    cout<<'\n';
+    BoundaryNodes* objBoundary = new BoundaryNodes();
+    cout<<"Printing boundary nodes of the tree:- "<<endl;
+    objBoundary->printBoundary(root);
     cout<<'\n';
     return 0;
 }
