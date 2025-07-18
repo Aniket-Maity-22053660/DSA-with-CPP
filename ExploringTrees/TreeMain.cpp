@@ -9,6 +9,7 @@
 #include "findDiameter.h"
 #include "IsBalanced.h"
 #include "IsIdentical.h"
+#include "IsSumTree.h"
 
 using namespace std;
 
@@ -64,5 +65,9 @@ int main(){
     CheckIsIdentical* objIdentical = new CheckIsIdentical();
     cout<<"Tree-1 and Tree-2 identical? ";
     cout<<(objIdentical->Check(root, root2) ? "Yes!" : "No!")<<endl;
+    cout<<'\n';
+    CheckIsSumTree* objSum = new CheckIsSumTree();
+    cout<<"Tree is a sum-tree? ";
+    cout<<(objSum->IsSumTree(root) ? "Yes" : "No")<<endl;
     return 0;
 }
