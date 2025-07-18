@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include "BuildTrees.h"
 #include "levelOrderTraversal.h"
 #include "preOrderTraversal.h"
@@ -10,6 +11,7 @@
 #include "IsBalanced.h"
 #include "IsIdentical.h"
 #include "IsSumTree.h"
+#include "printZigZagTree.h"
 
 using namespace std;
 
@@ -69,5 +71,14 @@ int main(){
     CheckIsSumTree* objSum = new CheckIsSumTree();
     cout<<"Tree is a sum-tree? ";
     cout<<(objSum->IsSumTree(root) ? "Yes" : "No")<<endl;
+    cout<<'\n';
+    cout<<"Printing zig-zag tree traversal:- "<<endl;
+    PrintZigZag* objZigZag = new PrintZigZag();
+    vector<int> vec = objZigZag->print(root);
+    vector<int>::iterator it;
+    for(it = vec.begin() ; it != vec.end() ; it++){
+        cout<<*it<<" ";
+    }
+    cout<<'\n';
     return 0;
 }
