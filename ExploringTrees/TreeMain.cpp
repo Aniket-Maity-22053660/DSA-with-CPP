@@ -8,13 +8,19 @@
 #include "findHeight.h"
 #include "findDiameter.h"
 #include "IsBalanced.h"
+#include "IsIdentical.h"
 
 using namespace std;
 
 int main(){
     Node* root = NULL;
+    Node* root2 = NULL; 
 
+    cout<<"Enter data from tree-1:- "<<endl;
     root = BuildTree(root);
+    cout<<'\n';
+    cout<<"Enter data from tree-2:- "<<endl;
+    root2 = BuildTree(root2);
     cout<<'\n';
     cout<<"Level order tree traversal:- "<<endl;
     LevelOrderTraversal *objLevel = new LevelOrderTraversal(root);
@@ -54,5 +60,9 @@ int main(){
     cout<<"Balanced tree?  ";
     CheckIsBalanced* objBalanced = new CheckIsBalanced();
     cout<<(objBalanced->check(root) ? "Yes!" : "No!")<<endl;
+    cout<<'\n';
+    CheckIsIdentical* objIdentical = new CheckIsIdentical();
+    cout<<"Tree-1 and Tree-2 identical? ";
+    cout<<(objIdentical->Check(root, root2) ? "Yes!" : "No!")<<endl;
     return 0;
 }
