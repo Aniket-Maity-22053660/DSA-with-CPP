@@ -15,6 +15,7 @@
 #include "printBoundaryNodes.h"
 #include "verticalTraversal.h"
 #include "printTopView.h"
+#include "printBottomView.h"
 
 using namespace std;
 
@@ -97,6 +98,11 @@ int main(){
     TopView* objTop = new TopView();
     cout<<"Printing top view of the tree:- "<<endl;
     objTop->printTopView(root);
+    cout<<'\n';
+    cout<<'\n';
+    BottomView* objBottom = new BottomView();
+    cout<<"Printing bottom view of the tree:- "<<endl;
+    objBottom->printBottomView(root);
     cout<<'\n';
     return 0;
 }
