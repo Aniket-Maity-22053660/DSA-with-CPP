@@ -14,6 +14,7 @@
 #include "printZigZagTree.h"
 #include "printBoundaryNodes.h"
 #include "verticalTraversal.h"
+#include "printTopView.h"
 
 using namespace std;
 
@@ -91,6 +92,11 @@ int main(){
     VerticalTraversal* objVertical = new VerticalTraversal();
     cout<<"Printint vertical tree traversal:- "<<endl;
     objVertical->verticalTraversal(root);
+    cout<<'\n';
+    cout<<'\n';
+    TopView* objTop = new TopView();
+    cout<<"Printing top view of the tree:- "<<endl;
+    objTop->printTopView(root);
     cout<<'\n';
     return 0;
 }
