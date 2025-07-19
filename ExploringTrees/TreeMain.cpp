@@ -18,6 +18,7 @@
 #include "printBottomView.h"
 #include "printLeftView.h"
 #include "printRightView.h"
+#include "printDiagonalTraversal.h"
 
 using namespace std;
 
@@ -115,6 +116,11 @@ int main(){
     RightView* objRight = new RightView();
     cout<<"Printing right view of the tree:- "<<endl;
     objRight->printRightView(root);
+    cout<<'\n';
+    cout<<'\n';
+    DiagonalTraversal* objDiag = new DiagonalTraversal();
+    cout<<"Printing diagonal traversal of the tree:- "<<endl;
+    objDiag->printDiagonalTraversal(root);
     cout<<'\n';
     return 0;
 }
