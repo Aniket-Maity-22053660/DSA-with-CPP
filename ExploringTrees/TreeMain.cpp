@@ -19,7 +19,7 @@
 #include "printLeftView.h"
 #include "printRightView.h"
 #include "printDiagonalTraversal.h"
-
+#include "sumOfLongestBloodLine.h"
 using namespace std;
 
 int main(){
@@ -121,6 +121,11 @@ int main(){
     DiagonalTraversal* objDiag = new DiagonalTraversal();
     cout<<"Printing diagonal traversal of the tree:- "<<endl;
     objDiag->printDiagonalTraversal(root);
+    cout<<'\n';
+    cout<<'\n';
+    SumOfLongestBloodLine* objBlood = new SumOfLongestBloodLine();
+    cout<<"Sum of longest blood line in a tree: ";
+    cout<<objBlood->sumOfLongestBloodLine(root);
     cout<<'\n';
     return 0;
 }
