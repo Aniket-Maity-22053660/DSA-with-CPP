@@ -13,6 +13,7 @@
 #include "IsSumTree.h"
 #include "printZigZagTree.h"
 #include "printBoundaryNodes.h"
+#include "verticalTraversal.h"
 
 using namespace std;
 
@@ -85,6 +86,11 @@ int main(){
     BoundaryNodes* objBoundary = new BoundaryNodes();
     cout<<"Printing boundary nodes of the tree:- "<<endl;
     objBoundary->printBoundary(root);
+    cout<<'\n';
+    cout<<'\n';
+    VerticalTraversal* objVertical = new VerticalTraversal();
+    cout<<"Printint vertical tree traversal:- "<<endl;
+    objVertical->verticalTraversal(root);
     cout<<'\n';
     return 0;
 }
