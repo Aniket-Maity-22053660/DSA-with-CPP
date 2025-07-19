@@ -16,6 +16,8 @@
 #include "verticalTraversal.h"
 #include "printTopView.h"
 #include "printBottomView.h"
+#include "printLeftView.h"
+#include "printRightView.h"
 
 using namespace std;
 
@@ -103,6 +105,16 @@ int main(){
     BottomView* objBottom = new BottomView();
     cout<<"Printing bottom view of the tree:- "<<endl;
     objBottom->printBottomView(root);
+    cout<<'\n';
+    cout<<'\n';
+    LeftView* objLeft = new LeftView();
+    cout<<"Printing left view of the tree:- "<<endl;
+    objLeft->printLeftView(root);
+    cout<<'\n';
+    cout<<'\n';
+    RightView* objRight = new RightView();
+    cout<<"Printing right view of the tree:- "<<endl;
+    objRight->printRightView(root);
     cout<<'\n';
     return 0;
 }
