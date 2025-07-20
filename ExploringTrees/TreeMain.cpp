@@ -18,8 +18,9 @@
 #include "printBottomView.h"
 #include "printLeftView.h"
 #include "printRightView.h"
-#include "printDiagonalTraversal.h"
+//#include "printDiagonalTraversal.h"
 #include "sumOfLongestBloodLine.h"
+#include "DiagonalTraversal-II.h"
 using namespace std;
 
 int main(){
@@ -118,14 +119,20 @@ int main(){
     objRight->printRightView(root);
     cout<<'\n';
     cout<<'\n';
-    DiagonalTraversal* objDiag = new DiagonalTraversal();
+   /* DiagonalTraversal* objDiag = new DiagonalTraversal();
     cout<<"Printing diagonal traversal of the tree:- "<<endl;
     objDiag->printDiagonalTraversal(root);
     cout<<'\n';
     cout<<'\n';
+    */
     SumOfLongestBloodLine* objBlood = new SumOfLongestBloodLine();
     cout<<"Sum of longest blood line in a tree: ";
     cout<<objBlood->sumOfLongestBloodLine(root);
+    cout<<'\n';
+    cout<<'\n';
+    DiagonalTraversal* objDiag = new DiagonalTraversal();
+    cout<<"Printing diagonal traversal:- "<<endl;
+    objDiag->diagonalTraversal(root2);
     cout<<'\n';
     return 0;
 }
