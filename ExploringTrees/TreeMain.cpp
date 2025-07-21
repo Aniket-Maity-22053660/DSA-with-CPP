@@ -22,6 +22,10 @@
 #include "sumOfLongestBloodLine.h"
 #include "DiagonalTraversal-II.h"
 #include "lowestCommonAncestor.h"
+#include "printSumOfAllNodes.h"
+#include "kSumPaths.h"
+#include "KthAncestor.h"
+
 using namespace std;
 
 int main(){
@@ -144,7 +148,21 @@ int main(){
     cin>>n2;
     LowestCommonAncestor* objCommon = new LowestCommonAncestor(n1, n2);
     Node* ans = objCommon->lowestCommonAncestor(root2);
-    cout<<ans->data;
+    cout<<"Lowest Common ancestor: "<<ans->data;
+    cout<<'\n';
+    cout<<'\n';
+    SumOfAllNodes* obj2 = new SumOfAllNodes();
+    cout<<"Sum: "<<obj2->findSum(root2)<<endl;
+    cout<<'\n';
+    cout<<'\n';
+    cout<<"Value of K sum paths:- "<<endl;
+    KSumPaths* objKSum = new KSumPaths(8);
+    cout<<"No of paths: "<<objKSum->kSum(root2);
+    cout<<'\n';
+    cout<<'\n';
+    KthAncestor* objKthAncestor = new KthAncestor();
+    cout<<objKthAncestor->findKthAncestor(root2);
     cout<<'\n';
     return 0;
 }
+

@@ -7,7 +7,7 @@ using namespace std;
 
 class CheckIsSumTree{
     bool IsSumTree(Node* root, int &sum);
-    bool leftSum = false, rightSum = false;
+   
     public:
     bool IsSumTree(Node* root);
 };
@@ -22,7 +22,9 @@ bool CheckIsSumTree:: IsSumTree(Node* root, int &sum){
         return true;
     }
     int left = 0, right = 0;
+    bool rightSum = false, leftSum = false;
     leftSum = IsSumTree(root->left, left);
+    
     if(leftSum){
         rightSum = IsSumTree(root->right, right);
     }
