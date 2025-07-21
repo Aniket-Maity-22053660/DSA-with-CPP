@@ -25,6 +25,7 @@
 #include "printSumOfAllNodes.h"
 #include "kSumPaths.h"
 #include "KthAncestor.h"
+#include "constructBinaryTreeFromPreAndIn.h"
 
 using namespace std;
 
@@ -162,6 +163,11 @@ int main(){
     cout<<'\n';
     KthAncestor* objKthAncestor = new KthAncestor();
     cout<<objKthAncestor->findKthAncestor(root2);
+    cout<<'\n';
+    cout<<'\n';
+    cout<<"Constructing Binary tree from pre-order and In-order traversal:- "<<endl;
+    ConstructBinaryTreeFromInPre* objConstructTree = new ConstructBinaryTreeFromInPre();
+    objConstructTree->ConstructTree();
     cout<<'\n';
     return 0;
 }
