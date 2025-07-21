@@ -21,6 +21,7 @@
 //#include "printDiagonalTraversal.h"
 #include "sumOfLongestBloodLine.h"
 #include "DiagonalTraversal-II.h"
+#include "lowestCommonAncestor.h"
 using namespace std;
 
 int main(){
@@ -133,6 +134,17 @@ int main(){
     DiagonalTraversal* objDiag = new DiagonalTraversal();
     cout<<"Printing diagonal traversal:- "<<endl;
     objDiag->diagonalTraversal(root2);
+    cout<<'\n';
+    cout<<'\n';
+    int n1, n2;
+    cout<<"Printing lowest common ancestor of two nodes:- "<<endl;
+    cout<<"Enter the value of node1: ";
+    cin>>n1;
+    cout<<"Enter the value of node2: ";
+    cin>>n2;
+    LowestCommonAncestor* objCommon = new LowestCommonAncestor(n1, n2);
+    Node* ans = objCommon->lowestCommonAncestor(root2);
+    cout<<ans->data;
     cout<<'\n';
     return 0;
 }
