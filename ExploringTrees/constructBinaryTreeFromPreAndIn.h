@@ -11,7 +11,7 @@ class ConstructBinaryTreeFromInPre{
     vector<int> PreOrder;
 
     void postOrder(Node*);
-    Node* Construct(int, int, int);
+    Node* Construct(int&, int, int);
     int findPos(int, vector<int>);
     public:
     ConstructBinaryTreeFromInPre(){

@@ -26,6 +26,7 @@
 #include "kSumPaths.h"
 #include "KthAncestor.h"
 #include "constructBinaryTreeFromPreAndIn.h"
+#include "minTimeToBurnTree.h"
 
 using namespace std;
 
@@ -169,6 +170,9 @@ int main(){
     ConstructBinaryTreeFromInPre* objConstructTree = new ConstructBinaryTreeFromInPre();
     objConstructTree->ConstructTree();
     cout<<'\n';
+    cout<<'\n';
+    BurningTree* objBurn = new BurningTree();
+    cout<<"Minimum time: "<<(objBurn->timeToBurn(root2))<<endl;
     return 0;
 }
 

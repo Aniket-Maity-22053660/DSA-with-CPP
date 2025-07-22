@@ -13,6 +13,7 @@ class KthAncestor{
     void find(Node* root);
     public:
     KthAncestor(){
+        cout<<"Finding the value of Kth ancestor of a node:- "<<endl;
         cout<<"Enter the value of K: ";
         cin>>K;
         cout<<"Enter the value of the node: ";
