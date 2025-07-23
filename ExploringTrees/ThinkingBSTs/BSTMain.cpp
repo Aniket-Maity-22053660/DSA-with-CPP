@@ -5,6 +5,7 @@
 #include "searchInBST.h"
 #include "deletionInBST.h"
 #include "checkBST.h"
+#include "kthSmallestInBST.h"
 
 #include<vector>
 
@@ -54,6 +55,14 @@ int main(){
     cout<<"Is it a Binary Search Tree? ";
     CheckBST* objCheck = new CheckBST();
     cout<<(objCheck->check(root) ? "Yes!" : "No!")<<endl;
+    cout<<'\n';
+    cout<<"Finding the value of kth smallest element in BST:- "<<endl;
+    int K;
+    cout<<"Enter the value of K: ";
+    cin>>K;
+    cout<<K<<"th smallest element in the BST: ";
+    KthSmallestInBST* objKthSmallest = new KthSmallestInBST();
+    cout<<objKthSmallest->findKthSmallest(root, K);
     cout<<'\n';
     return 0;
 }
