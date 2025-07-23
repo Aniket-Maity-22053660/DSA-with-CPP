@@ -3,6 +3,8 @@
 #include "../inOrderTraversal.h"
 #include "Node.h"
 #include "searchInBST.h"
+#include "deletionInBST.h"
+
 #include<vector>
 
 using namespace std;
@@ -40,6 +42,13 @@ int main(){
     }else{
         cout<<"The element was not found in the BST!"<<endl;
     }
+    cout<<'\n';
+    cout<<"Enter the element to be deleted from the BST: ";
+    cin>>element;
+    DeletionInBST* objDelete = new DeletionInBST();
+    objDelete->deleteNode(root, element);
+    cout<<"After deleting the node in-order traversal of the BST:- "<<endl;
+    objTraverseIn->Traverse(root);
     cout<<'\n';
     return 0;
 }
