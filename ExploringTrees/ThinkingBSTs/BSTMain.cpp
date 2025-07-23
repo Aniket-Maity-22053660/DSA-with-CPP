@@ -2,6 +2,7 @@
 #include "buildBinarySearchTrees.h"
 #include "../inOrderTraversal.h"
 #include "Node.h"
+#include "searchInBST.h"
 #include<vector>
 
 using namespace std;
@@ -27,6 +28,18 @@ int main(){
     InOrderTraversal* objTraverseIn = new InOrderTraversal();
     cout<<"In-order traversal of Binary Search Tree:- "<<endl;
     objTraverseIn->Traverse(root);
+    cout<<'\n';
+    int element;
+    cout<<"Searching in Binary Search Tree:- "<<endl;
+    cout<<"Enter the element to search: ";
+    cin>>element;
+    SearchInBST* objSearch = new SearchInBST();
+    Node* found = objSearch->searchBST(root, element);
+    if(found){
+        cout<<found->data<<" was found in the BST!"<<endl;
+    }else{
+        cout<<"The element was not found in the BST!"<<endl;
+    }
     cout<<'\n';
     return 0;
 }
