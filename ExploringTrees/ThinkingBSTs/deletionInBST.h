@@ -21,17 +21,19 @@ Node* DeletionInBST::deleteNode(Node* root, int data){
             delete root;
             return NULL;
         }else if(root->left == NULL){
+            Node* temp = root->right;
             delete root;
-            return root->right;
+            return temp;
         }else if(root->right == NULL){
+            Node* temp = root->left;
             delete root;
-            return root->left;
+            return temp;
         }else{
-            Node* successor = root->left;
-            while(successor->right != NULL){
-                successor = successor->right;
+            Node* predecessor = root->left;
+            while(predecessor->right != NULL){
+                predecessor = predecessor->right;
             }
-            root->data = successor->data;
+            root->data = predecessor->data;
             root->left = deleteNode(root->left, root->data);
         }
     }

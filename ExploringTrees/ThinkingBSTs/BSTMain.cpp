@@ -4,6 +4,7 @@
 #include "Node.h"
 #include "searchInBST.h"
 #include "deletionInBST.h"
+#include "checkBST.h"
 
 #include<vector>
 
@@ -49,6 +50,10 @@ int main(){
     objDelete->deleteNode(root, element);
     cout<<"After deleting the node in-order traversal of the BST:- "<<endl;
     objTraverseIn->Traverse(root);
+    cout<<'\n';
+    cout<<"Is it a Binary Search Tree? ";
+    CheckBST* objCheck = new CheckBST();
+    cout<<(objCheck->check(root) ? "Yes!" : "No!")<<endl;
     cout<<'\n';
     return 0;
 }
