@@ -22,12 +22,16 @@ bool CheckBST::check(Node* root){
         right = check(root->right);
     }
     if(left && right){
-        if(left == NULL){
+        if(root->left == NULL){
             if(root->right->data > root->data){
                 return true;
             }
-        }else if(right == NULL){
+        }else if(root->right == NULL){
             if(root->left->data < root->data){
+                return true;
+            }
+        }else if(root->left != NULL && root->right != NULL){
+            if(root->data > root->left->data && root->data < root->right->data){
                 return true;
             }
         }
