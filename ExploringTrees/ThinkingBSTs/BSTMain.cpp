@@ -6,6 +6,7 @@
 #include "deletionInBST.h"
 #include "checkBST.h"
 #include "kthSmallestInBST.h"
+#include "findLCAInBST.h"
 
 #include<vector>
 
@@ -29,6 +30,7 @@ int main(){
     for(int i = 0 ; i < vec.size() ; i++){
         root = objBuild->buildBST(root, vec.at(i));
     }
+    /*
     InOrderTraversal* objTraverseIn = new InOrderTraversal();
     cout<<"In-order traversal of Binary Search Tree:- "<<endl;
     objTraverseIn->Traverse(root);
@@ -64,5 +66,15 @@ int main(){
     KthSmallestInBST* objKthSmallest = new KthSmallestInBST();
     cout<<objKthSmallest->findKthSmallest(root, K);
     cout<<'\n';
+    */
+    LCAInBST* objLCA = new LCAInBST();
+    cout<<"Finding LCA in a BST:- "<<endl;
+    int n1, n2;
+    cout<<"Enter the value of n1: ";
+    cin>>n1;
+    cout<<"Enter the value of n2: ";
+    cin>>n2;
+    Node* ans = objLCA->findLCA(root, n1, n2);
+    cout<<"Lowest Common Ancestor: "<<ans->data<<endl;
     return 0;
 }

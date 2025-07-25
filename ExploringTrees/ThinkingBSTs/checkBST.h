@@ -3,40 +3,27 @@
 
 #include<iostream>
 #include "Node.h"
+#include<climits>
 
 class CheckBST{
+    bool checkBST(Node*, int, int);
     public:
     bool check(Node* root);
 };
 
 bool CheckBST::check(Node* root){
+    bool ans = checkBST(root, INT_MIN, INT_MAX);
+    return ans;
+}
+
+bool CheckBST::checkBST(Node* root, int min, int max){
     if(root == NULL){
         return true;
     }
-    if(root->left == NULL && root->right == NULL){
-        return true;
+    if(root->data >= min || root->data <= max){
+        return false;
     }
-    bool left = check(root->left);
-    bool right;
-    if(left){
-        right = check(root->right);
-    }
-    if(left && right){
-        if(root->left == NULL){
-            if(root->right->data > root->data){
-                return true;
-            }
-        }else if(root->right == NULL){
-            if(root->left->data < root->data){
-                return true;
-            }
-        }else if(root->left != NULL && root->right != NULL){
-            if(root->data > root->left->data && root->data < root->right->data){
-                return true;
-            }
-        }
-    }
-    return false;
+    return (checkBST(root->left, min, root->data) && checkBST(root->right, root->data, max) ? true : false);
 }
 
 #endif
