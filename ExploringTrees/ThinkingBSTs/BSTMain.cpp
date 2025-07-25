@@ -7,6 +7,7 @@
 #include "checkBST.h"
 #include "kthSmallestInBST.h"
 #include "findLCAInBST.h"
+#include "pairSumBST_I.h"
 
 #include<vector>
 
@@ -66,7 +67,7 @@ int main(){
     KthSmallestInBST* objKthSmallest = new KthSmallestInBST();
     cout<<objKthSmallest->findKthSmallest(root, K);
     cout<<'\n';
-    */
+    
     LCAInBST* objLCA = new LCAInBST();
     cout<<"Finding LCA in a BST:- "<<endl;
     int n1, n2;
@@ -76,5 +77,19 @@ int main(){
     cin>>n2;
     Node* ans = objLCA->findLCA(root, n1, n2);
     cout<<"Lowest Common Ancestor: "<<ans->data<<endl;
+    */
+    cout<<"Checking if pair sum exists in a BST!"<<endl;
+    int target;
+    cout<<"Enter the target sum: ";
+    cin>>target;
+    PairSumBST_I* objPair_I = new PairSumBST_I(target, root);
+    cout<<"Pair sum exists? "<<(objPair_I->findPairSum(root))<<endl;
+    vector<int> pair = objPair_I->getPair();
+    cout<<"Pairs: ";
+    vector<int>::iterator it;
+    for(it = pair.begin() ; it != pair.end() ; it++){
+        cout<<*it<<" ";
+    }
+    cout<<'\n';
     return 0;
 }
