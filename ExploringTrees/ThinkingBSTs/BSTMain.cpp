@@ -8,6 +8,7 @@
 #include "kthSmallestInBST.h"
 #include "findLCAInBST.h"
 #include "pairSumBST_I.h"
+#include "pairSumBST_II.h"
 
 #include<vector>
 
@@ -79,14 +80,26 @@ int main(){
     cout<<"Lowest Common Ancestor: "<<ans->data<<endl;
     */
     cout<<"Checking if pair sum exists in a BST!"<<endl;
+    cout<<"Method-1"<<endl;
     int target;
     cout<<"Enter the target sum: ";
     cin>>target;
     PairSumBST_I* objPair_I = new PairSumBST_I(target, root);
-    cout<<"Pair sum exists? "<<(objPair_I->findPairSum(root))<<endl;
+    cout<<"Pair sum exists? "<<(objPair_I->findPairSum(root) ? "Yes!" : "No!")<<endl;
     vector<int> pair = objPair_I->getPair();
-    cout<<"Pairs: ";
+    cout<<"Pair: ";
     vector<int>::iterator it;
+    for(it = pair.begin() ; it != pair.end() ; it++){
+        cout<<*it<<" ";
+    }
+    cout<<'\n';
+    cout<<"Method-2"<<endl;
+    cout<<"Enter the target element: ";
+    cin>>target;
+    PairSumBST_II* obj_II = new PairSumBST_II();
+    cout<<"Pair sum exists? "<<(obj_II->findPairSum(root, target) ? "Yes!" : "No!")<<endl;
+    pair = obj_II->getPair();
+    cout<<"Pair: ";
     for(it = pair.begin() ; it != pair.end() ; it++){
         cout<<*it<<" ";
     }
