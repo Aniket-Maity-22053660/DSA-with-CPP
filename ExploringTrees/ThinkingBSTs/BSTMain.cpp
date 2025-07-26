@@ -13,6 +13,7 @@
 #include "flattenBinaryTree.h"
 #include<vector>
 #include "balanceBST.h"
+#include "normalBSTTOBalancedBST.h"
 
 using namespace std;
 
@@ -116,10 +117,15 @@ int main(){
     FlattenBinaryTree* objFlatten = new FlattenBinaryTree();
     objFlatten->flattenBinaryTree(root);
     cout<<'\n';
-    */
+    
     cout<<"Balancing a BST!"<<endl;
     BalanceBST* objBalance = new BalanceBST();
     objBalance->balanceBST(root);
+    cout<<'\n';
+    */
+    cout<<"Converting the given BST to the balanced BST!"<<endl;
+    NormalToBalancedBST* objConvert = new NormalToBalancedBST();
+    objConvert->normalToBalancedBST(root);
     cout<<'\n';
     return 0;
 }
