@@ -14,6 +14,7 @@
 #include<vector>
 #include "balanceBST.h"
 #include "normalBSTTOBalancedBST.h"
+#include "mergeTwoBST.h"
 
 using namespace std;
 
@@ -122,10 +123,28 @@ int main(){
     BalanceBST* objBalance = new BalanceBST();
     objBalance->balanceBST(root);
     cout<<'\n';
-    */
+    
     cout<<"Converting the given BST to the balanced BST!"<<endl;
     NormalToBalancedBST* objConvert = new NormalToBalancedBST();
     objConvert->normalToBalancedBST(root);
+    cout<<'\n';
+    */
+    cout<<"Enter the number of elements for the Binary Search Tree: ";
+    cin>>size;
+    vec.resize(size);
+    for(int i = 0 ; i < vec.size() ; i++){
+        cout<<"Enter the element "<<(i+1)<<": ";
+        cin>>data;
+        vec.at(i) = data;
+    }
+    Node* root2 = NULL;
+    BuildBSTs* objBuild2 = new BuildBSTs();
+    for(int i = 0 ; i < vec.size() ; i++){
+        root2 = objBuild2->buildBST(root2, vec.at(i));
+    }
+    cout<<"Merging two BSTs!"<<endl;
+    MergeTwoBSTs* objMerge = new MergeTwoBSTs(root, root2);
+    objMerge->mergeTwoBSTs();
     cout<<'\n';
     return 0;
 }
