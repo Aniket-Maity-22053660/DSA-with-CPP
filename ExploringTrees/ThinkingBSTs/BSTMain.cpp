@@ -12,6 +12,7 @@
 #include "flattenBST.h"
 #include "flattenBinaryTree.h"
 #include<vector>
+#include "balanceBST.h"
 
 using namespace std;
 
@@ -110,10 +111,15 @@ int main(){
     FlattenBST* objFlatten = new FlattenBST();
     objFlatten->flattenBST(root);
     cout<<'\n';
-    */
+    
     cout<<"Flatttening a Binary Tree!"<<endl;
     FlattenBinaryTree* objFlatten = new FlattenBinaryTree();
     objFlatten->flattenBinaryTree(root);
+    cout<<'\n';
+    */
+    cout<<"Balancing a BST!"<<endl;
+    BalanceBST* objBalance = new BalanceBST();
+    objBalance->balanceBST(root);
     cout<<'\n';
     return 0;
 }
