@@ -9,7 +9,8 @@
 #include "findLCAInBST.h"
 #include "pairSumBST_I.h"
 #include "pairSumBST_II.h"
-
+#include "flattenBST.h"
+#include "flattenBinaryTree.h"
 #include<vector>
 
 using namespace std;
@@ -78,7 +79,7 @@ int main(){
     cin>>n2;
     Node* ans = objLCA->findLCA(root, n1, n2);
     cout<<"Lowest Common Ancestor: "<<ans->data<<endl;
-    */
+    
     cout<<"Checking if pair sum exists in a BST!"<<endl;
     cout<<"Method-1"<<endl;
     int target;
@@ -103,6 +104,16 @@ int main(){
     for(it = pair.begin() ; it != pair.end() ; it++){
         cout<<*it<<" ";
     }
+    cout<<'\n';
+    
+    cout<<"Flattening a BST!"<<endl;
+    FlattenBST* objFlatten = new FlattenBST();
+    objFlatten->flattenBST(root);
+    cout<<'\n';
+    */
+    cout<<"Flatttening a Binary Tree!"<<endl;
+    FlattenBinaryTree* objFlatten = new FlattenBinaryTree();
+    objFlatten->flattenBinaryTree(root);
     cout<<'\n';
     return 0;
 }
