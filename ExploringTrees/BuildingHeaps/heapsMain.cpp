@@ -35,7 +35,7 @@ class Heaps{
         cout<<'\n';
     }
 
-    void heapify(vector<int> Arr, int index){
+    void heapify(vector<int> &Arr, int index){
         int largest = index;
         int left = 2*largest;
         int right = 2*largest + 1;
@@ -82,7 +82,7 @@ int main(){
     cin>>element;
     objHeap->deleteElement(element);
     cout<<"After deleting an element: ";
-    objHeap->deleteElement(element);
+    
     objHeap->print();
     cout<<'\n';
     return 0;
