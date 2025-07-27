@@ -34,6 +34,21 @@ class Heaps{
         }
         cout<<'\n';
     }
+
+    void heapify(vector<int> Arr, int index){
+        int largest = index;
+        int left = 2*largest;
+        int right = 2*largest + 1;
+        if(left < Arr.size() && Arr[largest] < Arr[left]){
+            largest = left;
+        }
+        if(right < Arr.size() && Arr[largest] < Arr[right]){
+            largest = right;
+        }
+        if(largest != index){
+            swap(largest, index);
+        }
+    }
     void deleteElement(int data){
         int index = -1;
         for(int i = 1 ; i <= size ; i++){
@@ -46,16 +61,8 @@ class Heaps{
             return;
         }
         swap(index, size);
-        size = size - 1;
-        while((2*index <= size && 2*index + 1 <= size) && (Arr[index] < Arr[2*index] || Arr[index] < Arr[2*index + 1])){
-            if(Arr[index] < Arr[2*index]){
-                swap(index, 2*index);
-                index = 2*index;
-            }else if(Arr[index] < Arr[2*index + 1]){
-                swap(index, 2*index + 1);
-                index = 2*index + 1;
-            }
-        }
+        size = size -1;
+        heapify(Arr, index);
     }
 };
 
