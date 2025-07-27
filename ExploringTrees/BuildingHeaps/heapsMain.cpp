@@ -7,10 +7,10 @@ using namespace std;
 class Heaps{
     vector<int> Arr {INT_MAX};
     int size = 0;
-    void swap(int parent, int index){
-         int temp = Arr[parent];
-         Arr[parent] = Arr[index];
-         Arr[index] = temp;
+    void swap(int parent, int index, vector<int> &vec){
+         int temp = vec[parent];
+         vec[parent] = vec[index];
+         vec[index] = temp;
     }
     public:
     void insert(int data){
@@ -20,7 +20,7 @@ class Heaps{
         while(index > 1){
             int parent = index / 2;
             if(Arr[parent] < Arr[index]){
-                swap(parent, index);
+                swap(parent, index, Arr);
                 index = parent;
             }else{
                 return;
@@ -46,7 +46,8 @@ class Heaps{
             largest = right;
         }
         if(largest != index){
-            swap(largest, index);
+            swap(largest, index, Arr);
+            heapify(Arr, largest);
         }
     }
     void deleteElement(int data){
@@ -60,7 +61,7 @@ class Heaps{
         if(index == -1){
             return;
         }
-        swap(index, size);
+        swap(index, size, Arr);
         size = size -1;
         heapify(Arr, index);
     }
@@ -84,6 +85,24 @@ int main(){
     cout<<"After deleting an element: ";
     
     objHeap->print();
+    cout<<'\n';
+    cout<<"Heapify a given vector:-"<<endl;
+    cout<<"Enter the size of the vector: ";
+    vector<int> vec1(1, INT_MAX);
+    int size1;
+    cin>>size1;
+    for(int i = 1 ; i <= size1 ; i++){
+        cout<<"Element"<<(i-1)<<": ";
+        cin>>element;
+        vec1.push_back(element);
+    }
+    for(int i = (vec1.size() / 2) ; i >= 1 ; i--){
+        objHeap->heapify(vec1, i);
+    }
+    cout<<"After heapify the elements would be: ";
+    for(int i= 1 ; i < vec1.size() ; i++){
+        cout<<vec1.at(i)<<" ";
+    }
     cout<<'\n';
     return 0;
 }
