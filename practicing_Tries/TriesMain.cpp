@@ -34,6 +34,43 @@ class Trie{
         node->isEnd = true;
     }
 
+    void remove(string word){
+        TrieNode* node = root;
+        removeUtil(node, word, 0);
+    }
+
+    bool removeUtil(TrieNode* root, string word, int depth){
+        if(!root){
+            return false;
+        }
+        if(depth == word.size()){
+            if(!root->isEnd){
+                return false;
+            }
+            root->isEnd = false;
+            if(hasChildren(root)){
+                return false;
+            }
+            return true;
+        }
+        int idx = word[depth] - 'A';
+        if(removeUtil(root->children[idx], word, depth + 1)){
+            delete root->children[idx];
+            root->children[idx] = NULL;
+            return !root->isEnd && hasChildren(root);
+        }
+        return false;
+    }
+
+    bool hasChildren(TrieNode* root){
+        for(int i = 0 ; i < 26 ; i++){
+            if(root->children[i] != NULL){
+                return false;
+            }
+        }
+        return true;
+    }
+
     bool search(string word){
         TrieNode* node = root;
         for(char C : word){
@@ -57,6 +94,7 @@ class Trie{
         }
         return true;
     }
+    
 };
 
 int main(){
