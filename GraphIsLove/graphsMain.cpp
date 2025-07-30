@@ -4,20 +4,21 @@
 
 using namespace std;
 
+template<class T>
 class Graph{
-    map<int, list<int>> mp;
+    map<T, list<T>> mp;
     public:
-    void addEdge(int u, int v, int isDirect){
+    void addEdge(T u, T v, int isDirect){
         mp[u].push_back(v);
         if(!isDirect){
             mp[v].push_back(u);
         }
     }
     void printGraph(){
-        for(pair<int, list<int>> i : mp){
+        for(pair<T, list<T>> i : mp){
             cout<<i.first<<"->";
-            for(int j : i.second){
-                cout<<j<<", ";
+            for(T j : i.second){
+                cout<<j<<" ";
             }
             cout<<'\n';
         }
@@ -33,7 +34,7 @@ int main(){
     cout<<"Is it a directed graph? ";
     cin>>directed;
 
-    Graph* obj = new Graph();
+    Graph<int>* obj = new Graph<int>();
 
     for(int i = 0 ; i < m ; i++){
         cout<<"Enter the value of u: ";
